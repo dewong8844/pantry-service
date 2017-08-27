@@ -1,0 +1,48 @@
+Starting redis: redis-server /usr/local/etc/redis.conf
+Setup redis on mac, see https://medium.com/@petehouston/install-and-config-redis-on-mac-os-x-via-homebrew-eb8df9a4f298
+
+Redis tutorial:
+http://openmymind.net/redis.pdf
+https://www.tutorialspoint.com/redis/redis_java.htm
+
+Spark tutorials:
+http://sparkjava.com/tutorials/gradle-setup
+https://github.com/perwendel/spark/blob/master/README.md#examples
+http://www.mscharhag.com/java/building-rest-api-with-spark
+https://sparktutorials.github.io/2015/07/17/sparkberry-pi.html
+
+Gson tutorials:
+https://www.tutorialspoint.com/gson/gson_class.htm
+http://www.journaldev.com/2321/gson-example-tutorial-parse-json
+
+Gradle tutorials:
+https://spring.io/guides/gs/gradle/
+
+Setup raspberry-pi as wireless AP
+https://www.maketecheasier.com/set-up-raspberry-pi-as-wireless-access-point/
+
+Raspberry-pi sleep, shut off hdmi:
+Edit /boot/config.txt, add line: hdmi_blanking=1
+https://arstechnica.com/civis/viewtopic.php?f=11&t=1324763
+
+Curl commands for testing:
+get: 
+$ curl http://localhost:4567/product
+
+post:
+$ curl -H "Content-Type: application/json" -X POST -d '{"brand" :"Kong Yen", "name":"RiceVinegar", "amount":"20.2", "unit":"FL OZ", "category": "grocery", "ingredient": "rice vinegar"}' http://localhost:4567/product
+
+$ curl -H "Content-Type: application/json" -X POST -d '{"brand" :"Trader Joes", "name":"Kentucky Bourbon BBQ Sauce", "amount":"19", "unit":"OZ", "category": "grocery", "ingredient": "bbq sauce"}' http://localhost:4567/product
+
+Redis command line example:
+$ redis-cli
+> get products:_id
+"4"
+> get products:1
+"{\"id\":1, \"brand\":\"Kong Yen\", \"name\":\"Rice Vinegar\", \"amount\":26.0, \"unit\":\"FL OZ\", \"ingredient\":\"vinegar\", \"category\":\"grocery\"}"
+> get barcodes:_id
+"4"
+> get barcodes:1
+"{\"id\":1, \"type\":\"EAN_13\", \"value\":\"4710046011101\", \"productid\":1}"
+>
+ 
