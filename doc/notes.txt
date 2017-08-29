@@ -25,7 +25,24 @@ Raspberry-pi sleep, shut off hdmi:
 Edit /boot/config.txt, add line: hdmi_blanking=1
 https://arstechnica.com/civis/viewtopic.php?f=11&t=1324763
 
+Start redis-server (in separate window/shell)
+==================
+$ redis-server
+
+Build/run instructions, no eclipse, use gradle
+==========================================
+$ gradle jar
+$ cd build/lib
+$ java -jar pantry-service-0.1.0.jar
+
+Build/run instructions, eclipse
+===============================
+Eclipse -> File -> Import ... -> Gradle -> Existing Gradle Project
+  Select the pantry-service root directory, use specific gradle version, e.g. 4.1
+Run project will start web service, make sure redis-server is running
+
 Curl commands for testing:
+=========================
 get: 
 $ curl http://localhost:4567/product
 
@@ -35,6 +52,7 @@ $ curl -H "Content-Type: application/json" -X POST -d '{"brand" :"Kong Yen", "na
 $ curl -H "Content-Type: application/json" -X POST -d '{"brand" :"Trader Joes", "name":"Kentucky Bourbon BBQ Sauce", "amount":"19", "unit":"OZ", "category": "grocery", "ingredient": "bbq sauce"}' http://localhost:4567/product
 
 Redis command line example:
+==========================
 $ redis-cli
 > get products:_id
 "4"
@@ -44,5 +62,7 @@ $ redis-cli
 "4"
 > get barcodes:1
 "{\"id\":1, \"type\":\"EAN_13\", \"value\":\"4710046011101\", \"productid\":1}"
->
+> hget barcodes:lookup:value 4710046011101
+"1"
+
  
