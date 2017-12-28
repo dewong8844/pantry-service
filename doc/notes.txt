@@ -32,7 +32,12 @@ $ curl http://localhost:4567/product
 post:
 $ curl -H "Content-Type: application/json" -X POST -d '{"brand" :"Kong Yen", "name":"RiceVinegar", "amount":"20.2", "unit":"FL OZ", "category": "grocery", "ingredient": "rice vinegar"}' http://localhost:4567/product
 
-$ curl -H "Content-Type: application/json" -X POST -d '{"brand" :"Trader Joes", "name":"Kentucky Bourbon BBQ Sauce", "amount":"19", "unit":"OZ", "category": "grocery", "ingredient": "bbq sauce"}' http://localhost:4567/product
+$ curl -H "Content-Type: application/json" -X POST -d '{"type":"EAN_13", "value":"4710046011101", "productid":1}' http://localhost:4567/barcode
+
+post 2:
+$ curl -H "Content-Type: application/json" -X POST -d '{"brand":"Kirkland","name":"tissue","amount":100.0,"unit":"sheet","ingredient":"tissue","category":"hygiene"}' http://localhost:4567/product
+
+$ curl -H "Content-Type: application/json" -X POST -d '{"id":6,"type":"UPC_A","value":"096619498024","productid":6}' http://localhost:4567/barcode
 
 Redis command line example:
 $ redis-cli
